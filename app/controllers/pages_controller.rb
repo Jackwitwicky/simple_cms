@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
     if @page.save
-      flash[:notive] = "Page created successfully"
+      flash[:notice] = "Page created successfully"
       redirect_to page_path(@page)
     else
       render 'new'
@@ -37,6 +37,14 @@ class PagesController < ApplicationController
   end
 
   def delete
+    @page = Page.find(params[:id])
+  end
+
+  def destroy
+    @page = Page.find(params[:id])
+    @page.destroy
+    flash[:notice] = "Page deleted successfully"
+    redirect_to pages_path
   end
 
   private
