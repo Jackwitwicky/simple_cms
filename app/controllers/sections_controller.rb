@@ -30,7 +30,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
 
     if @section.update(section_params)
-      flash[:notice] = 'Section updates successfully'
+      flash[:notice] = 'Section updated successfully'
       redirect_to sections_path
     else
       render 'edit'
@@ -38,6 +38,14 @@ class SectionsController < ApplicationController
   end
 
   def delete
+    @section = Section.find(params[:id])
+  end
+
+  def destroy
+    @section = Section.find(params[:id])
+    @section.destroy
+    flash[:notice] = 'Section deleted successfully'
+    redirect_to sections_path
   end
 
   private
