@@ -4,6 +4,7 @@ class SectionsController < ApplicationController
   end
 
   def show
+    @section = Section.find(params[:id])
   end
 
   def new
@@ -22,6 +23,18 @@ class SectionsController < ApplicationController
   end
 
   def edit
+    @section = Section.find(params[:id])
+  end
+
+  def update
+    @section = Section.find(params[:id])
+
+    if @section.update(section_params)
+      flash[:notice] = 'Section updates successfully'
+      redirect_to sections_path
+    else
+      render 'edit'
+    end
   end
 
   def delete
