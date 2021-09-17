@@ -2,6 +2,7 @@ class SectionsController < ApplicationController
 
   layout 'admin'
 
+  before_action :confirm_logged_in
   before_action :set_section_count, only: [:new, :create, :edit, :update]
 
   def index
