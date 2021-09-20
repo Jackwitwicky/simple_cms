@@ -8,6 +8,7 @@
     <tr>
       <th>#</th>
       <th>Name</th>
+      <th>Permalink</th>
       <th>Visible</th>
       <th>Sections</th>
       <th>Actions</th>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= page.position %></td>
         <td><%= page.name %></td>
+        <td><%= page.permalink %></td>
         <td class='center'><%= status_tag(page.visible) %></td>
         <td class='center'><%= page.sections.size %></td>
         <td class="actions">
