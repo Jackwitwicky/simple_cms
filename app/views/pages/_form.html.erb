@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <th>Subject</th>
-    <td><%= collection_select(:page, :subject_id, Subject.all, :id, :name) %></td>
+    <td><%= f.object.subject.name %></td>
   </tr>
 
 </table>

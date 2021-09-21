@@ -4,7 +4,6 @@ class PagesController < ApplicationController
 
   before_action :confirm_logged_in
   before_action :find_subject
-  before_action :find_subjects, only: [:new, :create, :edit, :update]
   before_action :set_page_count, only: [:new, :create, :edit, :update]
 
   def index
@@ -21,6 +20,7 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new(page_params)
+    @page.subject = @subject
     if @page.save
       flash[:notice] = "Page created successfully"
       redirect_to page_path(@page, subject_id: @subject.id)
@@ -58,15 +58,11 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:id, :name, :permalink, :position, :visible, :subject_id)
+    params.require(:page).permit(:id, :name, :permalink, :position, :visible)
   end
 
   def find_subject
     @subject = Subject.find(params[:subject_id])
-  end
-
-  def find_subjects
-    @subjects = Subject.sorted
   end
 
   def set_page_count

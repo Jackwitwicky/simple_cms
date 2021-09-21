@@ -26,6 +26,6 @@
   </tr>
   <tr>
     <th>Page</th>
-    <td><%= collection_select(:section, :page_id, Page.all, :id, :name) %></td>
+    <td><%= f.object.page.name %></td>
   </tr>
 </table>
