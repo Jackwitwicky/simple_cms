@@ -39,7 +39,7 @@ class SectionsController < ApplicationController
 
     if @section.update(section_params)
       flash[:notice] = 'Section updated successfully'
-      redirect_to sections_path, page_id: @page.id
+      redirect_to sections_path(page_id: @page.id), page_id: @page.id
     else
       render 'edit'
     end
@@ -67,7 +67,7 @@ class SectionsController < ApplicationController
   end
 
   def set_section_count
-    @section_count = Section.count
+    @section_count = @page.sections.count
     if params[:action] == 'new' || params[:action] == 'create'
       @section_count += 1
     end
